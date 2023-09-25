@@ -1,0 +1,40 @@
+[package]
+name = "tinygobook_but_rust"
+version = "0.0.0"
+authors = ["Tremendous1192"]
+edition = "2021"
+description = "Custom templete for Wio Terminl."
+readme = "README.md"
+repository = "https://github.com/Tremendous1192/wio_terminal_template"
+license = "MIT OR Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# 必須クレート
+wio_terminal = "0.7.0"
+panic-halt = "0.2"
+
+# 内蔵機器
+atsamd-hal = "0.16.0" # 基本ボード
+cortex-m = "0.7.3" # 内臓マイク等
+cortex-m-rt = { version = "0.7", optional = true } # 内臓マイク等
+embedded-sdmmc = "0.3.0" # SDカード. 0.4 以降はエラーが出る
+embedded-graphics = "0.7.1" # 描画 0.8.0 だと displayを渡せない
+lis3dh = "0.4.2" # 加速度計
+accelerometer = "0.12.0" # 加速度計
+
+# alloc
+heapless = "0.7.16" # Vec
+generic-array = "0.14.7" # ジェネリック型配列
+micromath = "2.0.0" # 組込み向け数学処理
+
+# データ変換
+ryu = "1.0.15" # float型をstr型に変換する
+itoa = "1.0.9" # 整数型をstr型に変換する
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
